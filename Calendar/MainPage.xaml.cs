@@ -1,5 +1,4 @@
 ﻿using System;
-using Plugin.LocalNotification;
 
 namespace Calendar;
 
@@ -7,7 +6,6 @@ public partial class MainPage : ContentPage
 {
 
     string congratlation = "Поздравляю c";
-    string holiday;
     //string date = "01 01";
 
     public MainPage()
@@ -20,18 +18,13 @@ public partial class MainPage : ContentPage
         switch (date.ToString("dd MM"))
         {
             case "31 12":
-                holiday = $"О боже скоро Нг🫢\nЯ ушёл готовится";
-                text.Text = holiday;
+                text.Text = $"О боже скоро Нг🫢\nЯ ушёл готовится";
                 break;
             case "01 01":
-                holiday = $"{congratlation} Новым Годом!🎄🥳";
-                text.Text = holiday;
-                GetNotif(holiday);
+                text.Text = $"{congratlation} Новым Годом!🎄🥳";
                 break;
             case "03 01":
-                holiday = "Это тестовое уведомление";
-                text.Text = holiday;
-                GetNotif(holiday);
+                text.Text = "Это тестовое уведомление";
                 break;
             case "01 03":
                 text.Text = $"{congratlation} днём Дурака!🤪";
@@ -58,29 +51,6 @@ public partial class MainPage : ContentPage
                 text.Text = "Сегодня нет праздника🫤";
                 break;
         }
-        LocalNotificationCenter.Current.NotificationActionTapped += Current_NotificationActionTapped;
-    }
-
-    public void Current_NotificationActionTapped(Plugin.LocalNotification.EventArgs.NotificationActionEventArgs e)
-    {
-        if (e.IsTapped)
-        {
-            LocalNotificationCenter.Current.Cancel(1);
-        }
-    }
-
-    public void GetNotif(string t)
-    {
-        var req = new NotificationRequest
-        {
-            NotificationId = 1,
-            Title = "Праздник пришёл!",
-            Subtitle = t,
-            Description = "Не забудь поздравить своих близких!",
-            BadgeNumber = 1,
-            CategoryType = NotificationCategoryType.Event,
-        };
-        LocalNotificationCenter.Current.Show(req);
     }
 }
 

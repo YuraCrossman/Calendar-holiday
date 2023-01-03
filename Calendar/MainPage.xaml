@@ -10,17 +10,9 @@
             VerticalOptions="Center">
 
             <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center"
-                IsVisible="false"/>
-
-            <Label
                 x:Name="text"
                 Text="тут чтото должно быть"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"/>
